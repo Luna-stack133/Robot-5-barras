@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Datos de la IMU (subir solo los resultados que se quieran conservar)
+*.csv
+
+# Editor / sistema
+.vscode/
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# MATLAB
+*.asv
+*.mex*
+
+# Software y comprimidos del fabricante
+*.exe
+*.dll
+*.zip
+*.rar
