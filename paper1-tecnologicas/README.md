@@ -26,7 +26,7 @@ paper1-tecnologicas/
 ├── scripts/               ← análisis (ver tabla abajo); lib/ = modelo del robot y reconstrucción de video;
 │                             video_tracking/ = seguimiento del marcador en los .mp4
 ├── results/               ← salidas numéricas (CSV/JSON) que generan los scripts
-├── figures/               ← figuras 1–6 (PNG 300 dpi + PDF vectorial)
+├── figures/               ← figuras 1–6 (PNG a 300 dpi)
 └── docs/
     ├── notas/             ← plan de pruebas y revisiones de las sesiones (registro histórico)
     ├── fotos/             ← fotografía del robot completo y del montaje

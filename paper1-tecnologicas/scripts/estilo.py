@@ -12,6 +12,6 @@ INK="#1f1f1d"; GRAY="#8a8a85"; GRID="#e6e5e0"
 OUT=FIGS
 import os; os.makedirs(OUT,exist_ok=True)
 def guardar(fig,nombre):
-    fig.savefig(f"{OUT}/{nombre}.png",dpi=300,bbox_inches="tight"); fig.savefig(f"{OUT}/{nombre}.pdf",bbox_inches="tight")
+    fig.savefig(f"{OUT}/{nombre}.png",dpi=300,bbox_inches="tight")
 def ejes(ax):
     ax.grid(color=GRID,lw=0.5); ax.set_axisbelow(True)

@@ -9,20 +9,20 @@
 clear; clc; close all
 
 %  SECCIÓN 1── PARÁMETROS DEL ROBOT ───────────────────────────────────────
-p.L1 = 0.25;  % brazo izquierdo proximal
-p.L2 = 0.30;  % brazo izquierdo distal
-p.L3 = 0.30;  % brazo derecho distal
-p.L4 = 0.25;  % brazo derecho proximal
-p.d  = 0.30;  % barra de base
+p.L1 = 0.12;  % brazo izquierdo proximal (geometría v3)
+p.L2 = 0.18;  % brazo izquierdo distal
+p.L3 = 0.18;  % brazo derecho distal
+p.L4 = 0.12;  % brazo derecho proximal
+p.d  = 0.15;  % separación entre ejes de los servos
 O1x = 0; O1y = 0;  % posicion x,y de punto de barra izquierdo
 O2x = p.d; O2y = 0; % posicion x,y de punto de barra derecho
 % ── MASAS ───────────────────────────────────────────────────────────────
-rho  = 0.5;  % densidad lineal
-p.m1 = rho * p.L1; % masa L1
-p.m2 = rho * p.L2; % masa L2
-p.m3 = rho * p.L3; % masa L3
-p.m4 = rho * p.L4; % masa L4
-p.m_ef = 0.10;     % masa efector final
+% masas medidas en balanza (nov. 2026)
+p.m1 = 0.115; % proximal izquierdo [kg]
+p.m2 = 0.170; % distal izquierdo [kg]
+p.m3 = 0.170; % distal derecho [kg]
+p.m4 = 0.115; % proximal derecho [kg]
+p.m_ef = 0.334;    % efector con torre Z y garra [kg]
 % ── CENTROS DE MASA ────────────────────────────────────────────────────
 p.lc1 = p.L1/2;
 p.lc2 = p.L2/2;
@@ -47,9 +47,9 @@ motor.Vbus = 12.0;      % [V]
 fprintf('\n══ SECCIÓN 3: Trayectoria Quintica ══\n\n')
 
 % Puntos de vértices de triángulo en zona superior de espacio de trabajo
-Puntos = [-0.05 0.3
-      0.35 0.3
-     -0.05 0.1];
+Puntos = [0.025 0.24
+          0.125 0.24
+          0.075 0.16];   % [m] alcanzable y lejos de singularidades con la geometría v3
 
 % ── LÍMITES INDUSTRIALES DE MOVIMIENTO ────────────────────────────────
 Vmax = 0.2;  % velocidad máxima del efector final en m/s

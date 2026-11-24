@@ -1,0 +1,2 @@
+Copie aquí los archivos .ttf de IBM Plex Sans e IBM Plex Mono (Google Fonts) para el aspecto exacto del diseño.
+Si esta carpeta está vacía, la aplicación usa Segoe UI y Consolas.

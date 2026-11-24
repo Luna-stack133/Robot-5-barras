@@ -1,74 +1,85 @@
 # Robot paralelo de 5 barras
 
-Plataforma robótica paralela plana de 2 GDL y bajo costo, accionada por dos servomotores AC integrados **JMC iHSV57-30-18-36** comandados por pulso/dirección desde una **ESP32-S3**. Se usa como banco de pruebas para cinemática, generación de trayectorias, control y fusión de sensores (IMU), y es la base de un pick and place con gripper y, más adelante, control servo-visual.
+Plataforma robótica paralela de bajo costo tipo **SCARA paralelo de 3 GDL**: un mecanismo plano de cinco barras para X-Y y un eje lineal Z en el efector, con garra. El plano X-Y lo mueven dos servomotores AC integrados **JMC iHSV57-30-18-36** comandados por pulso/dirección desde una **ESP32-S3**. Una **IMU BNO055** montada dentro del eslabón distal derecho mide el giro del eslabón y alimenta un EKF que corre en la misma ESP32. Se usa como banco de pruebas para identificación dinámica, control con realimentación inercial y pick and place.
 
 **Universidad Nacional de Colombia — Ingeniería Mecatrónica**
 Equipo: Luna Valentina Niebles Gil · Isaías Lazaro Charry · Roiman (gripper)
 Asignaturas: Técnicas de Control · Robótica · Práctica Académica Especial (PAE 2027-1)
 
-> Estado al 20 de octubre de 2026: el robot se mueve por trayectorias cartesianas desde una GUI en Python, con cero por utillaje. La IMU está en la etapa 0 (caracterización). El gripper, los encoders externos y el lazo con IMU están en planeación.
+> **Estado al 24 de noviembre de 2026**
+> - Geometría v3: proximales 120 mm, distales 180 mm, separación entre ejes 150 mm; efector con torre Z y garra; cableado interno.
+> - Firmware **1.3** (EKF y corrección con IMU, arranca apagada) y app de escritorio **R5B Lab 0.4.1** (PySide6).
+> - Sintonía de los drivers congelada desde el 13 nov; mantenimiento de acoples el 22 nov; calibración cinemática con video: 1.15–1.17 mm RMS.
+> - **Paper 1** (identificación dinámica, TecnoLógicas): campaña S1–S4 terminada, análisis y manuscrito listos.
+> - **Paper 2** (control con realimentación inercial, Ingeniería e Investigación): en preparación. Primera sesión con/sin IMU hecha el 15 nov.
+> - En diseño: reductor planetario 6:1 impreso para bajar la relación de inercia.
+
+---
 
 ## Secciones del repositorio
 
-El repositorio está organizado por secciones. La **plataforma** es común a todo el proyecto; cada **artículo** tiene su propia
-carpeta autocontenida (datos crudos, scripts, resultados, figuras y un README para correr todo de principio a fin).
+El repositorio está organizado por secciones. La **plataforma** es común a todo el proyecto; cada **artículo** tiene su propia carpeta autocontenida (datos crudos, scripts, resultados, figuras y un README para correr todo de principio a fin).
 
 | Sección | Carpeta | Contenido |
 |---|---|---|
-| Plataforma | `firmware/`, `gui/`, `simulacion/`, `imu/`, `hardware/`, `docs/` | Firmware de la ESP32-S3, GUI, simulación, caracterización de la IMU, CAD y documentación general |
+| Plataforma | `firmware/`, `gui/`, `imu/`, `simulacion/`, `hardware/`, `docs/` | Firmware de la ESP32-S3, app R5B Lab, etapas de la IMU (caracterización, IMU frente a cinemática, modelo y EKF), simulación, hardware y documentación |
 | Paper 1 — TecnoLógicas | [`paper1-tecnologicas/`](paper1-tecnologicas/) | *Experimental Identification of Configuration-Dependent Dynamics and Actuation Constraints in a Low-Cost Parallel-SCARA Robot*: datos de las sesiones S1–S4, software de adquisición usado (firmware 1.3, app R5B Lab 0.4.1), análisis, figuras y respuestas a las preguntas del docente |
 | Paper 2 — Ingeniería e Investigación | [`paper2-ingenieria-e-investigacion/`](paper2-ingenieria-e-investigacion/) | Control con realimentación inercial (EKF + IMU). En preparación |
-
----
 
 ## Documentación
 
 | Área | Documento | Qué contiene |
 |---|---|---|
-| Fabricación | [docs/01-fabricacion.md](docs/01-fabricacion.md) | Geometría (versiones), montaje, utillaje de cero, efector final, mejoras planeadas |
-| Hardware | [docs/02-hardware.md](docs/02-hardware.md) | Servos iHSV57, ESP32-S3, buffer 74HCT14, cableado y pines, IMU, alimentación |
-| Control | [docs/03-control.md](docs/03-control.md) | Cinemática, singularidades, perfil quíntico, esquema actual y esquema EKF + IMU planeado |
-| Software | [docs/04-software.md](docs/04-software.md) | Firmware, GUI, simulación MATLAB, herramientas IMU y JMC; cómo compilar y ejecutar |
-| Arquitectura de software | [docs/05-arquitectura-software.md](docs/05-arquitectura-software.md) | Componentes, protocolo serie, máquina de estados, flujos y arquitectura objetivo |
-| Investigación | [docs/06-investigacion.md](docs/06-investigacion.md) | Estado del arte, brecha encontrada, planteamiento por asignatura y PAE |
+| Fabricación | [docs/01-fabricacion.md](docs/01-fabricacion.md) | Geometría (versiones), eslabones v3 con cableado interno, efector con eje Z y garra, utillaje de cero, mantenimiento, mejoras planeadas |
+| Hardware | [docs/02-hardware.md](docs/02-hardware.md) | Servos iHSV57 y sus parámetros, ESP32-S3, buffer 74HCT14, BNO055, pines, cableado |
+| Control | [docs/03-control.md](docs/03-control.md) | Cinemática, singularidades, trayectoria continua, modelo identificado, EKF y ley de corrección con IMU |
+| Software | [docs/04-software.md](docs/04-software.md) | Firmware 1.3 / 1.4, app R5B Lab, scripts de la IMU, simulación; cómo compilar y ejecutar |
+| Arquitectura de software | [docs/05-arquitectura-software.md](docs/05-arquitectura-software.md) | Componentes, protocolo serie, máquina de estados, tareas de la ESP32 y flujo de datos |
+| Investigación | [docs/06-investigacion.md](docs/06-investigacion.md) | Estado del arte, brecha, papers en curso y planteamiento por asignatura |
 | Bitácora | [docs/bitacora.md](docs/bitacora.md) | Avances, decisiones y hallazgos con fecha |
-| Pendientes | [docs/pendientes.md](docs/pendientes.md) | Lo que falta documentar o corregir |
+| Pendientes | [docs/pendientes.md](docs/pendientes.md) | Lo que falta hacer, documentar o corregir |
 
 ## Estructura del repositorio
 
 ```
-robot-5-barras/
+Robot-5-barras/
 ├── firmware/
-│   └── robot_5bar_esp32/      Firmware del robot (ESP32-S3, Arduino)
-│       ├── robot_5bar_esp32.ino
-│       └── kinematics_5bar.h  Núcleo cinemático: única fuente de verdad de la geometría
+│   ├── robot_5bar_esp32/              Firmware 1.3 (en uso): trayectorias, IMU BNO055, EKF y corrección
+│   │   ├── robot_5bar_esp32.ino
+│   │   ├── kinematics_5bar.h          Núcleo cinemático: única fuente de verdad de la geometría
+│   │   ├── imu_bno055.h · control_imu.h · ekf_5b.h · lqr_tabla.h
+│   │   └── LEEME_v1.3.md
+│   └── v1.4_prealimentacion/          Firmware 1.4 (prealimentación por modelo; aún no probado en el robot)
 ├── gui/
-│   └── robot_5bar_gui.py      Interfaz de control (Python + Tkinter + Matplotlib)
-├── simulacion/
-│   └── matlab/                Cinemática, Jacobiano y trayectorias quínticas (main.m)
+│   └── R5B_Lab/                       App de escritorio R5B Lab 0.4.1 (Python + PySide6)
 ├── imu/
-│   └── etapa0/                Lectura y caracterización de la MPU6050 (firmware + análisis)
+│   ├── etapa0_bno055/                 Caracterización de la BNO055 en reposo (firmware + análisis)
+│   ├── etapa1/                        IMU frente a la cinemática, golpes, calibración con la IMU
+│   └── etapa2_modelo_ekf/             Modelo dinámico, identificación, EKF offline, video
+├── simulacion/
+│   └── matlab/                        Cinemática, Jacobiano y trayectorias quínticas (main.m)
 ├── hardware/
-│   ├── cad/                   Modelos CAD / STL (por subir)
-│   └── datasheets/            Enlaces a manuales de los componentes
-├── docs/                      Documentación por áreas
-├── paper1-tecnologicas/       Paper 1 (TecnoLógicas): datos, adquisición, scripts, resultados, figuras
-│   ├── adquisicion/           Firmware 1.3 y app R5B Lab 0.4.1 usados en las sesiones
-│   ├── data/                  raw/ (S1–S4, video_tracking), runs.csv, exclusions.csv
-│   ├── scripts/               Análisis completo (run_all.py), seguimiento de video, modelo
-│   ├── results/  figures/     Salidas numéricas y figuras 1–6
-│   └── docs/                  Notas de sesiones, fotos, ensayos opcionales
-└── paper2-ingenieria-e-investigacion/   Paper 2 (en preparación)
+│   ├── cad/                           Modelos CAD / STL (por subir)
+│   └── datasheets/                    Enlaces a manuales de los componentes
+├── docs/                              Documentación por áreas
+├── paper1-tecnologicas/               Paper 1: datos, adquisición, scripts, resultados, figuras
+│   ├── adquisicion/                   Firmware 1.3 y app R5B Lab 0.4.1 usados en las sesiones
+│   ├── data/                          raw/ (S1–S4, video_tracking), runs.csv, exclusions.csv
+│   ├── scripts/                       Análisis completo (run_all.py), seguimiento de video, modelo
+│   ├── results/  figures/             Salidas numéricas y figuras 1–6
+│   └── docs/                          Notas de sesiones, fotos, ensayos opcionales
+└── paper2-ingenieria-e-investigacion/ Paper 2 (en preparación)
 ```
 
 ## Inicio rápido
 
-1. **Firmware:** abrir `firmware/robot_5bar_esp32/robot_5bar_esp32.ino` en Arduino IDE, placa *ESP32S3 Dev Module*, instalar la librería **FastAccelStepper** (gin66) y cargar.
-2. **GUI:** `pip install -r gui/requirements.txt` y luego `python gui/robot_5bar_gui.py`.
-3. Conectar al puerto COM de la ESP32 → poner el utillaje → **Fijar CERO** → retirar el utillaje → mover con *Ir a coordenada* o *Trazar figura*.
+1. **Firmware:** abrir `firmware/robot_5bar_esp32/robot_5bar_esp32.ino` en Arduino IDE, placa *ESP32S3 Dev Module*, instalar la librería **FastAccelStepper** (gin66) y cargar. No usar *Erase All Flash* (borra la calibración guardada de la IMU).
+2. **App:** en `gui/R5B_Lab/`, `python -m venv .venv`, activar el entorno, `pip install -r requirements.txt` y `python main.py`. También se puede crear un ejecutable con `crear_ejecutable.bat`.
+3. En la app: **Inicio** → elegir el puerto de la ESP32-S3 → **Conectar**. En **Monitoreo**: acercar los brazos con JOG, poner el utillaje → **Fijar cero** (90°/90°) → retirar el utillaje. Mover con *Ir a un punto*, *Figuras* o *Secuencias*.
+4. La corrección con IMU arranca **Apagada**. Se cambia en **Control y estimación** (Apagada / Sombra / Activa).
 
 Detalles y advertencias de seguridad en [docs/04-software.md](docs/04-software.md) y [docs/02-hardware.md](docs/02-hardware.md).
 
 ## Video y fotos
 
-Las fotos del montaje van en [`docs/img/`](docs/img/). *(Pendiente: subir fotos del robot, del cableado y del utillaje.)*
+Las fotos del montaje van en [`docs/img/`](docs/img/). La fotografía del robot completo para el Paper 1 va en `paper1-tecnologicas/docs/fotos/`.

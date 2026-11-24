@@ -1,25 +1,32 @@
 # Pendientes
 
+## Experimentos
+
+- [ ] **Paper 2:** repetir el bloque pareado con/sin IMU después del mantenimiento (figuras a 100/1000 y 200/2000, pick and place de 10 ciclos), con video. Antes, verificación corta en modo Sombra (golpes y secuencia de 18 puntos) para ver si el modelo sigue valiendo.
+- [ ] Actualizar los parámetros del modelo en el firmware (`CTL MOD` en la 1.4, o `ekf_5b.h`) con los identificados en el Paper 1 después del mantenimiento.
+- [ ] Probar en el robot la prealimentación por modelo (firmware 1.4), primero con ganancia 0,5 y a 100/1000.
+- [ ] Pick and place con carga real (garra con objeto).
+- [ ] Ensayos opcionales del Paper 1: golpe con servos apagados y brazos libres; brazos sujetos con servos activos; latencia del comando al movimiento (ver `paper1-tecnologicas/docs/ensayos_opcionales.md`).
+
+## Mecánica
+
+- [ ] Reductor planetario 6:1: elegir la holgura con las piezas de prueba, medir el eje libre y la rosca, y diseñar la carcasa definitiva.
+- [ ] Control del eje Z (N20 con encoder, lazo de posición en la ESP32) y de la garra (MG90S) desde el firmware.
+- [ ] Distales más rígidos y juntas con dos rodamientos (después de cerrar las campañas de los papers).
+- [ ] Revisar la inclinación del montaje de la IMU (pitch ≈ −4,65°) y el origen del pico de 13,2 Hz.
+
 ## Para corregir en el código
 
-- [ ] **Geometría desactualizada.** `kinematics_5bar.h` tiene la v1 (0,090 / 0,165 / 0,155 m). Actualizar a la v2 (0,15 / 0,20 / 0,15 m). La simulación (`main.m`) y los valores por defecto de la GUI usan 0,25 / 0,30 / 0,30 m.
-- [ ] **Modo de ensamblaje del firmware.** El firmware de este repositorio solo usa el modo 3 (sgn = [+1, +1]), pero el utillaje a 90°/90° deja el robot en el modo 1. Con la geometría actual del firmware, la cinemática inversa del punto de cero da θ2 = 126,4° en vez de 90°, así que el primer `GOTO` después de `SETHOME` le pediría al eje 2 un salto grande. Subir la versión del firmware con modos seleccionables (`MODE n`) o cambiar el utillaje.
-- [ ] **Límites articulares** a los topes mecánicos reales.
-- [ ] **Medir los ángulos reales del utillaje** y ponerlos en `TH1_HOME_DEG / TH2_HOME_DEG`.
+- [ ] **Límites articulares** a los topes mecánicos reales (hoy [−170°, 350°] calculados para cubrir la zona útil).
+- [ ] Integrar en la app la acción de la garra (hoy las acciones Tomar / Soltar de las secuencias solo se registran).
+- [ ] Revisar `simulacion/matlab` con la geometría v3 (se actualizaron `main.m` y los puntos del triángulo).
 - [ ] `ternario.m` estaba vacío en la carpeta original; no se subió.
-
-## Versiones que faltan en el repositorio
-
-- [ ] Firmware y GUI con modos de ensamblaje seleccionables, geometría v2 y límites ampliados (si los tiene otro integrante, subirlos aquí).
-- [ ] Bocetos o código de la nueva aplicación (GUI propia).
 
 ## Para documentar
 
-- [ ] Fotos del robot, el cableado y el utillaje (`docs/img/`)
-- [ ] Archivos CAD/STL y método de fabricación de cada pieza (`hardware/cad/`)
+- [ ] Fotos del robot completo, el cableado, el utillaje y el efector (`docs/img/` y `paper1-tecnologicas/docs/fotos/`)
+- [ ] Archivos CAD/STL de los eslabones v3, la torre Z, la garra y el utillaje (`hardware/cad/`)
 - [ ] Lista de materiales con costos
 - [ ] Fuente de alimentación y protección contra regeneración
-- [ ] Parámetros configurados en los servos (DIP / software JMC)
 - [ ] Diseño del gripper (Roiman)
-- [ ] Resultados de la etapa 0 de la IMU (JSON y gráficas)
-- [ ] Videos de las pruebas de trayectorias
+- [ ] Videos de las pruebas de trayectorias (enlace a Drive o Zenodo)
