@@ -1,0 +1,16 @@
+run_id,role,posture,level,scope,reason,action
+2026-11-22_12-50-34,DOE,D,L1,run (all sensors),corrida interrumpida,excluded; cell re-run
+2026-11-22_12-50-56,DOE,"(0,146)",L2,run (all sensors),postura desplazada 4 mm por corrida interrumpida (repetida el 23 nov),excluded; cell re-run
+2026-11-22_12-51-27,DOE,"(0,146)",L3,run (all sensors),postura desplazada 4 mm por corrida interrumpida (repetida el 23 nov),excluded; cell re-run
+2026-11-22_12-51-49,tap_test,"(0,146)",,run (all sensors),postura desplazada 4 mm por corrida interrumpida (repetida el 23 nov),excluded; cell re-run
+2026-11-22_13-06-13,validation_posture,V2,L2,run (all sensors),velocidad 100/1000 en vez de 300/2000 (repetida el 23 nov),excluded; cell re-run
+2026-11-22_13-06-56,validation_posture,V1,L2,run (all sensors),velocidad 100/1000 en vez de 300/2000 (repetida el 23 nov),excluded; cell re-run
+2026-11-23_15-38-47,DOE,D,L1,run (all sensors),repetición extra: la réplica original (12:50:23) es válida; solo para sensibilidad,sensitivity only
+2026-11-23_15-42-21,validation_posture,V1,L2,video metrics only,sincronización r = 0.40 < 0.75,gyroscope kept
+2026-11-23_15-58-53,trajectory_test,,,video metrics only,seguimiento del marcador insuficiente (46 % de cuadros); reconstrucción fallida,gyroscope kept
+2026-11-23_15-59-09,trajectory_test,,,video metrics only,seguimiento del marcador insuficiente (46 % de cuadros); reconstrucción fallida,gyroscope kept
+2026-11-23_15-59-30,trajectory_test,,,video metrics only,seguimiento del marcador insuficiente (46 % de cuadros); reconstrucción fallida,gyroscope kept
+2026-11-23_15-59-58,trajectory_test,,,video metrics only,seguimiento del marcador insuficiente (46 % de cuadros); reconstrucción fallida,gyroscope kept
+2026-11-23_16-00-14,trajectory_test,,,video metrics only,seguimiento del marcador insuficiente (46 % de cuadros); reconstrucción fallida,gyroscope kept
+2026-11-23_16-00-30,trajectory_test,,,video metrics only,seguimiento del marcador insuficiente (46 % de cuadros); reconstrucción fallida,gyroscope kept
+2026-11-23_16-15-55,trajectory_test,,,video metrics only,desalineación de 58 mm tras la sincronización,gyroscope kept

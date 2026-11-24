@@ -1,0 +1,1 @@
+Poner aquí la fotografía del robot completo de 3 GDL en alta resolución (al menos 3000 px de lado mayor), por ejemplo `robot_3gdl.jpg`, y las fotos del montaje: utillaje de bloqueo, carga de 100 g con la cinta, celular en el trípode, marcador de 20 mm. Nombre sugerido: `AAAA-MM-DD_descripcion.jpg`.

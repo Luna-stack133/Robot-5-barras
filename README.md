@@ -8,6 +8,17 @@ Asignaturas: Técnicas de Control · Robótica · Práctica Académica Especial 
 
 > Estado al 20 de octubre de 2026: el robot se mueve por trayectorias cartesianas desde una GUI en Python, con cero por utillaje. La IMU está en la etapa 0 (caracterización). El gripper, los encoders externos y el lazo con IMU están en planeación.
 
+## Secciones del repositorio
+
+El repositorio está organizado por secciones. La **plataforma** es común a todo el proyecto; cada **artículo** tiene su propia
+carpeta autocontenida (datos crudos, scripts, resultados, figuras y un README para correr todo de principio a fin).
+
+| Sección | Carpeta | Contenido |
+|---|---|---|
+| Plataforma | `firmware/`, `gui/`, `simulacion/`, `imu/`, `hardware/`, `docs/` | Firmware de la ESP32-S3, GUI, simulación, caracterización de la IMU, CAD y documentación general |
+| Paper 1 — TecnoLógicas | [`paper1-tecnologicas/`](paper1-tecnologicas/) | *Experimental Identification of Configuration-Dependent Dynamics and Actuation Constraints in a Low-Cost Parallel-SCARA Robot*: datos de las sesiones S1–S4, software de adquisición usado (firmware 1.3, app R5B Lab 0.4.1), análisis, figuras y respuestas a las preguntas del docente |
+| Paper 2 — Ingeniería e Investigación | [`paper2-ingenieria-e-investigacion/`](paper2-ingenieria-e-investigacion/) | Control con realimentación inercial (EKF + IMU). En preparación |
+
 ---
 
 ## Documentación
@@ -40,7 +51,14 @@ robot-5-barras/
 ├── hardware/
 │   ├── cad/                   Modelos CAD / STL (por subir)
 │   └── datasheets/            Enlaces a manuales de los componentes
-└── docs/                      Documentación por áreas
+├── docs/                      Documentación por áreas
+├── paper1-tecnologicas/       Paper 1 (TecnoLógicas): datos, adquisición, scripts, resultados, figuras
+│   ├── adquisicion/           Firmware 1.3 y app R5B Lab 0.4.1 usados en las sesiones
+│   ├── data/                  raw/ (S1–S4, video_tracking), runs.csv, exclusions.csv
+│   ├── scripts/               Análisis completo (run_all.py), seguimiento de video, modelo
+│   ├── results/  figures/     Salidas numéricas y figuras 1–6
+│   └── docs/                  Notas de sesiones, fotos, ensayos opcionales
+└── paper2-ingenieria-e-investigacion/   Paper 2 (en preparación)
 ```
 
 ## Inicio rápido

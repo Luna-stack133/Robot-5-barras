@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+*.mp4
+*.mov
+build/
+dist/
+# la raíz ignora *.csv; aquí los datos sí se versionan
+!*.csv

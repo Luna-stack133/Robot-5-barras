@@ -1,0 +1,81 @@
+{
+  "amax_mm_s2": 1000.0,
+  "carga_g": 0.0,
+  "correccion_imu": {
+    "alfa": 0.3,
+    "dmax": 1.0,
+    "eventos": [],
+    "lavado": 1.0,
+    "ley": "ALFA",
+    "modo": 0,
+    "modo_texto": "apagada",
+    "zona": 1.0
+  },
+  "duracion_s": 21.07481949999965,
+  "fecha": "2026-11-22 13:06:53",
+  "firmware": "1.3",
+  "geometria_mm": {
+    "D": 150.0,
+    "L1": 120.0,
+    "L2": 180.0,
+    "L3": 180.0,
+    "L4": 120.0
+  },
+  "interrumpida": false,
+  "modo_ensamblaje": 1,
+  "nombre": "Excitacion 5 ciclos (25, 240) d12 menosy",
+  "pausa_s": 2.0,
+  "theta1_deg": 130.05,
+  "theta2_deg": 85.77,
+  "tipo": "corrida",
+  "vmax_mm_s": 100.0,
+  "x_mm": 25.0,
+  "y_mm": 240.0,
+  "referencia_mm": [
+    [
+      25.0,
+      240.0
+    ],
+    [
+      25.0,
+      228.0
+    ],
+    [
+      25.0,
+      240.0
+    ],
+    [
+      25.0,
+      228.0
+    ],
+    [
+      25.0,
+      240.0
+    ],
+    [
+      25.0,
+      228.0
+    ],
+    [
+      25.0,
+      240.0
+    ],
+    [
+      25.0,
+      228.0
+    ],
+    [
+      25.0,
+      240.0
+    ],
+    [
+      25.0,
+      228.0
+    ],
+    [
+      25.0,
+      240.0
+    ]
+  ],
+  "muestras_imu": 2407
+}
