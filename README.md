@@ -3,8 +3,8 @@
 Plataforma robótica paralela de bajo costo tipo **SCARA paralelo de 3 GDL**: un mecanismo plano de cinco barras para X-Y y un eje lineal Z en el efector, con garra. El plano X-Y lo mueven dos servomotores AC integrados **JMC iHSV57-30-18-36** comandados por pulso/dirección desde una **ESP32-S3**. Una **IMU BNO055** montada dentro del eslabón distal derecho mide el giro del eslabón y alimenta un EKF que corre en la misma ESP32. Se usa como banco de pruebas para identificación dinámica, control con realimentación inercial y pick and place.
 
 **Universidad Nacional de Colombia — Ingeniería Mecatrónica**
-Equipo: Luna Valentina Niebles Gil · Isaías Lazaro Charry · Roiman (gripper)
-Asignaturas: Técnicas de Control · Robótica · Práctica Académica Especial (PAE 2027-1)
+Autores: Luna Valentina Niebles Gil · Isaías Lazaro Charry · Roiman Cardenas Rosado
+
 
 > **Estado al 24 de noviembre de 2026**
 > - Geometría v3: proximales 120 mm, distales 180 mm, separación entre ejes 150 mm; efector con torre Z y garra; cableado interno.
